@@ -21,7 +21,7 @@ def set_value_labels(
 ) -> IntoDataFrameT:
     """
     Changes the values in the dataframe according to the value formats in the metadata.
-    It will return a copy of the dataframe. If no appropiate formats were found, the result will be an unchanged copy
+    It will return a copy of the dataframe. If no appropriate formats were found, the result will be an unchanged copy
     of the original dataframe.
 
     Parameters
@@ -40,7 +40,7 @@ def set_value_labels(
     Returns
     -------
         df_copy : pandas or polars dataframe
-            a copy of the original dataframe with the values changed, if appropiate formats were found, unaltered
+            a copy of the original dataframe with the values changed, if appropriate formats were found, unaltered
             otherwise
     """
 
@@ -96,7 +96,7 @@ def set_value_labels(
                         revdict = dict()
                         for orival in original_values:
                             curcat = labels.get(orival)
-                            if not revdict.get(curcat):
+                            if curcat not in revdict:
                                 revdict[curcat] = orival
                         categories.sort(key=revdict.get)
                         df_copy = df_copy.with_columns(nw.col(var_name).cast(nw.Enum(categories)))
