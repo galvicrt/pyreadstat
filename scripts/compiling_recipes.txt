@@ -1,0 +1,31 @@
+# Recipes to be run manually in the shell/command window
+
+# compile and install
+
+python3 setup.py install --user
+
+
+# compile in place (needed to build the documentation)
+
+python3 setup.py build_ext --inplace
+
+# compile in place rebuilding c sources
+
+python3 setup.py build_ext --inplace --use-cython
+* Note: if cython is installed it will be used anyway. The resulting .c files will be different depending if built on
+windows or linux. That means to generate wheels for windows, make sure that pyx are cythonized on windows.
+
+# build documentation: go to docs folder and:
+
+make html
+
+# build distribution
+python3 setup.py sdist bdist_wheel
+
+# upload to pypi test
+twine upload --repository-url https://test.pypi.org/legacy/ dist/*
+# install from pypi test
+ pip install --index-url https://test.pypi.org/simple/ pyreadstat
+
+ # upload to pypi prod
+ twine upload dist/*

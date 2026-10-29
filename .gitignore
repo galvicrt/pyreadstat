@@ -1,0 +1,13 @@
+/.idea
+/__pycache__
+*.pyc
+*.pyd
+~$*
+/build
+*.so
+/pyreadstat.egg-info
+/dist2
+.DS_Store
+dist/
+test_data/write/
+.vscode
